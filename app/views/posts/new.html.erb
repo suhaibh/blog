@@ -1,0 +1,20 @@
+<%= simple_form_for @post do |f| %>
+	<%= render 'shared/error_messages', object: f.object %>
+	
+<div class="post-form">
+	<div class="row">		
+		<div class="col-lg-4">
+			<%= f.input :title, class: "form-control" %>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-lg-9">
+			<%= f.input :body, class: "form-control" %>
+		</div>
+	</div>
+
+		<%= f.button :submit, class: "btn btn-primary"%>
+		<% end %>
+	</div>
+</div>
