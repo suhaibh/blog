@@ -1,5 +1,10 @@
 <h1>Posts#index</h1>
 <% @posts.each do |post| %>
-<div class="posts-index">
-	<%= post.title %>
+
+	<div class="posts-index">
+		<%= post.title %>
+	</div>
 <% end %>
+
+
+<%= link_to "Create New Post", new_post_path %>
