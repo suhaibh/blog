@@ -26,4 +26,10 @@ class PostsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
+  test "should create post" do
+    assert_difference 'Post.count', 1 do 
+      post :create, post: {title: "Title", body: "Body"}
+    end
+  end
+
 end
