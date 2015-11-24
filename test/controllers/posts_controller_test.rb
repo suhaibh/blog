@@ -30,6 +30,13 @@ class PostsControllerTest < ActionController::TestCase
     assert_difference 'Post.count', 1 do 
       post :create, post: {title: "Title", body: "Body"}
     end
+    assert_redirected_to root_path
+  end
+
+  test "should render new with invalid information" do
+    get :new
+    post :create, post: {title: "", body: ""}
+    assert_template "posts/new"
   end
 
 end
