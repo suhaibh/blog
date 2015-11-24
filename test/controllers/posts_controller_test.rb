@@ -26,11 +26,18 @@ class PostsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should create post" do
+  test "should create post and redirect to root" do
     assert_difference 'Post.count', 1 do 
       post :create, post: {title: "Title", body: "Body"}
     end
+    assert_equal "Post created!", flash[:success]
     assert_redirected_to root_path
+  end
+
+  test "should edit" do
+    patch :update, id: @post, post: {title: @post.title, body: @post.body}
+    assert_equal "Post updated!", flash[:success]
+    assert_redirected_to(@post)
   end
 
   test "should render new with invalid information" do
