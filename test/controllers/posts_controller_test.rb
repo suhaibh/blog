@@ -37,8 +37,13 @@ class PostsControllerTest < ActionController::TestCase
   test "should edit" do
     patch :update, id: @post, post: {title: @post.title, body: @post.body}
     assert_equal "Post updated!", flash[:success]
-    assert_redirected_to(@post)
+    assert_redirected_to post_path(@post)
   end
+
+  test "should render edit when incorrect information submitted" do
+    patch :update, id: @post, post: {title: "", body: ""}
+    assert_template :edit
+  end  
 
   test "should render new with invalid information" do
     get :new
