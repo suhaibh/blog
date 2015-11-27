@@ -51,4 +51,11 @@ class PostsControllerTest < ActionController::TestCase
     assert_template "posts/new"
   end
 
+  test "should delete post" do
+    assert_difference "Post.count", -1 do 
+      delete :destroy, id: @post
+    end
+    assert_redirected_to root_path
+    assert_equal "Post deleted!", flash[:danger]
+  end
 end
